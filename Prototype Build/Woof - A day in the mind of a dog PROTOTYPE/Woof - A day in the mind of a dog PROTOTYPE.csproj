@@ -84,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\interactionScript.cs" />
     <Compile Include="Assets\scripts\mainMechanic.cs" />
     <Compile Include="Assets\scripts\mouseLook.cs" />
     <Compile Include="Assets\scripts\movement.cs" />
