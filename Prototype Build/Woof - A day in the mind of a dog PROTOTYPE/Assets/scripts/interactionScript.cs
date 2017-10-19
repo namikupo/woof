@@ -6,13 +6,21 @@ public class interactionScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Test");
 
-        if (other.gameObject.CompareTag("trampoline"))
+        if (other.gameObject.tag == ("trampoline"))
         {
             Rigidbody rb = GetComponentInParent<Rigidbody>();
-            rb.AddForce(0f,50f,0f);
+            rb.isKinematic = false;
+            rb.AddForce(new Vector3(0f, 500f, 0f),ForceMode.VelocityChange);
             Debug.Log(rb.gameObject.name);
+            StartCoroutine(bounce());
         }
+    }
+
+    private IEnumerator bounce()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Rigidbody rb1 = GetComponentInParent<Rigidbody>();
+        rb1.isKinematic = true;
     }
 }

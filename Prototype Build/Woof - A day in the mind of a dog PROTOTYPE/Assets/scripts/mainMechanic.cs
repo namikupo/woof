@@ -22,18 +22,6 @@ public class mainMechanic : MonoBehaviour
             stopDraggingObject();
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("Test");
-
-        if (other.gameObject.tag == "trampoline")
-        {
-            Rigidbody rb = GetComponentInParent<Rigidbody>();
-            rb.AddForce(0f, 1000000f, 0f);
-            Debug.Log("FUUUU");
-        }
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && other.name == "Interactable object")
