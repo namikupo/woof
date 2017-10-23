@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class interactionScript : MonoBehaviour
 {
+    [SerializeField]
+    private CharacterController dogController;
+
+    private Vector3 jumpVector;
+
+    private FirstPersonController FirstPersonController;
+
+    private void Start()
+    {
+        dogController = GetComponent<CharacterController>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.tag == ("trampoline"))
         {
-            Rigidbody rb = GetComponentInParent<Rigidbody>();
-            rb.isKinematic = false;
-            rb.AddForce(new Vector3(0f, 500f, 0f),ForceMode.VelocityChange);
-            Debug.Log(rb.gameObject.name);
-            StartCoroutine(bounce());
+            jumpVector = new Vector3(0, 1, 0);
+            jumpVector = transform.TransformDirection(jumpVector);
+            jumpVector.y = jumpVector.y * FirstPersonController.JumpSpeed;
+            dogController.Move(jumpVector);
         }
     }
 
-    private IEnumerator bounce()
+    private void Update()
     {
-        yield return new WaitForSecondsRealtime(1f);
-        Rigidbody rb1 = GetComponentInParent<Rigidbody>();
-        rb1.isKinematic = true;
+        jumpVector.y -= 20f * Time.deltaTime;
+    }
+
+    private void jump()
+    {
     }
 }

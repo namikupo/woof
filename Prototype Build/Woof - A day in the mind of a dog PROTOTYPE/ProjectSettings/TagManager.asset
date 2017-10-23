@@ -8,6 +8,7 @@ TagManager:
   - draggable
   - beforeTrampoline
   - trampoline
+  - owner
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Pickup
+  - Owner
   - 
   - 
   - 
