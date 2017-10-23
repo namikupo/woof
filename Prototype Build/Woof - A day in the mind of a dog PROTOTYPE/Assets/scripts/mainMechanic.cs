@@ -12,9 +12,34 @@ public class mainMechanic : MonoBehaviour
     [SerializeField]
     private GameObject trampoline;
 
+    //Troels: Lyd der afspilles når objekt bliver indsat.
+    [SerializeField]
+    private AudioClip changeSound;
+
+    //Troels: Lyd der afspilles når et objekt tages fat i.
+    [SerializeField]
+    private AudioClip biteSound;
+
+    //Troels: Lyd der afspilles når et objekt gives slip på.
+    [SerializeField]
+    private AudioClip biteReleaseSound;
+
+    //Troels: Denne AudioSource bruges til at afspille lydeffekterne.
+    [SerializeField]
+    private AudioSource aSource;
+
+    public float volController;
+    private bool dragSoundPlayed;
+
     // Forfatter: Pomeranian
     // Metode: Spilleren skal kunne forvandle objekter, samt samle objekter op og flytte dem.
     // De individuelle objekter der kan trækkes skal defineres på forhånd.
+    private void Start()
+    {
+        dragSoundPlayed = false;
+        aSource = GetComponent<AudioSource>();
+        volController = 1f;
+    }
 
     private void Update()
     {
@@ -41,7 +66,10 @@ public class mainMechanic : MonoBehaviour
             Destroy(other.gameObject);
 
             if (other.tag == ("interactableObject"))
+            { 
             Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
+                aSource.PlayOneShot(changeSound, 1f);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && other.name == "Interactable Static Object")
         {
@@ -51,9 +79,24 @@ public class mainMechanic : MonoBehaviour
         else if (other.tag == "draggable")
         {
             //Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
+            //Troels: Derudover skal der startes en lyd som indikere at objektet bliver grebet fat i.
             if (Input.GetKey(KeyCode.Mouse1))
             {
+
                 dragObject();
+
+                if (!dragSoundPlayed)
+                {
+                    aSource.PlayOneShot(biteSound, 1f);
+                    dragSoundPlayed = true;
+                }
+            }
+
+            //Troels: Når der ikke er grebet fat i objektet mere, indikeres der med en lyd at der er blevet givet slip.
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                aSource.PlayOneShot(biteReleaseSound, 1f);
+                dragSoundPlayed = false;
             }
 
         }
