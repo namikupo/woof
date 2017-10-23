@@ -11,7 +11,6 @@ public class mainMechanic : MonoBehaviour
     [SerializeField]
     private GameObject trampoline;
 
-<<<<<<< HEAD
     //Troels: Lyd der afspilles når objekt bliver indsat.
     [SerializeField]
     private AudioClip changeSound;
@@ -31,10 +30,7 @@ public class mainMechanic : MonoBehaviour
     public float volController;
     private bool dragSoundPlayed;
 
-    // Forfatter: Pomeranian
-=======
-    // Forfatter: Eskild Middelboe
->>>>>>> master
+    // Forfatter: Eskild Middelboe & Troels Jensen
     // Metode: Spilleren skal kunne forvandle objekter, samt samle objekter op og flytte dem.
     // De individuelle objekter der kan trækkes skal defineres på forhånd.
     private void Start()
@@ -59,14 +55,13 @@ public class mainMechanic : MonoBehaviour
             Destroy(other.gameObject);
 
             if (other.tag == ("interactableObject"))
-<<<<<<< HEAD
-            { 
-            Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
+
+            {
+                Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
                 aSource.PlayOneShot(changeSound, 1f);
             }
-=======
-                Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
->>>>>>> master
+
+            Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && other.name == "Interactable Static Object")
         {
@@ -75,16 +70,14 @@ public class mainMechanic : MonoBehaviour
         }
         else if (other.tag == "draggable")
         {
-<<<<<<< HEAD
             //Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
             //Troels: Derudover skal der startes en lyd som indikere at objektet bliver grebet fat i.
-=======
+
             // Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
             // Dette script vil blive ryddet op senere.
->>>>>>> master
+
             if (Input.GetKey(KeyCode.Mouse1))
             {
-
                 dragObject();
 
                 if (!dragSoundPlayed)

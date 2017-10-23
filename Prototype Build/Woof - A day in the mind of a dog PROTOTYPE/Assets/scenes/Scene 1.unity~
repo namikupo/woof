@@ -276,7 +276,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-
+<<<<<<< HEAD
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_UseFovKick
       value: 0
@@ -329,8 +329,8 @@ Prefab:
       propertyPath: m_FootstepSounds.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: cbb6865c3c0d2a147a631ee2b9037684, type: 3}
-
-
+=======
+>>>>>>> master
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ad0c9916e1874545886b9d3c7f7a6c0, type: 2}
   m_IsPrefabParent: 0
@@ -619,7 +619,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
+<<<<<<< HEAD
 --- !u!1 &809532411
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,8 +830,8 @@ CapsuleCollider:
   m_Height: 1.3389654
   m_Direction: 1
   m_Center: {x: 0, y: 0.16948271, z: 0}
-
-
+=======
+>>>>>>> master
 --- !u!1001 &947892019
 Prefab:
   m_ObjectHideFlags: 0
