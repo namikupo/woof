@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class mainMechanic : MonoBehaviour
 {
-
     // Objekt som skal indsættes når man interagere med objekt.
     [SerializeField]
     private GameObject sphere;
@@ -12,6 +11,7 @@ public class mainMechanic : MonoBehaviour
     [SerializeField]
     private GameObject trampoline;
 
+<<<<<<< HEAD
     //Troels: Lyd der afspilles når objekt bliver indsat.
     [SerializeField]
     private AudioClip changeSound;
@@ -32,6 +32,9 @@ public class mainMechanic : MonoBehaviour
     private bool dragSoundPlayed;
 
     // Forfatter: Pomeranian
+=======
+    // Forfatter: Eskild Middelboe
+>>>>>>> master
     // Metode: Spilleren skal kunne forvandle objekter, samt samle objekter op og flytte dem.
     // De individuelle objekter der kan trækkes skal defineres på forhånd.
     private void Start()
@@ -41,22 +44,12 @@ public class mainMechanic : MonoBehaviour
         volController = 1f;
     }
 
+    // Scriptet tager det objekt man vil trække i, og sætter dens position i verdenen til at være lig ens egen.
+
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Mouse1))
             stopDraggingObject();
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("Test");
-
-        if (other.gameObject.tag == "trampoline")
-        {
-            Rigidbody rb = GetComponentInParent<Rigidbody>();
-            rb.AddForce(0f, 1000000f, 0f);
-            Debug.Log("FUUUU");
-        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -66,20 +59,29 @@ public class mainMechanic : MonoBehaviour
             Destroy(other.gameObject);
 
             if (other.tag == ("interactableObject"))
+<<<<<<< HEAD
             { 
             Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
                 aSource.PlayOneShot(changeSound, 1f);
             }
+=======
+                Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
+>>>>>>> master
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && other.name == "Interactable Static Object")
         {
             Destroy(other.gameObject);
-            Instantiate(trampoline, other.transform.position, Quaternion.Euler(0f, 0f, 0f));    
+            Instantiate(trampoline, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
         else if (other.tag == "draggable")
         {
+<<<<<<< HEAD
             //Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
             //Troels: Derudover skal der startes en lyd som indikere at objektet bliver grebet fat i.
+=======
+            // Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
+            // Dette script vil blive ryddet op senere.
+>>>>>>> master
             if (Input.GetKey(KeyCode.Mouse1))
             {
 
@@ -98,29 +100,27 @@ public class mainMechanic : MonoBehaviour
                 aSource.PlayOneShot(biteReleaseSound, 1f);
                 dragSoundPlayed = false;
             }
-
         }
-            
     }
 
     private void stopDraggingObject()
     {
-            Collider collider1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
-            Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();
-            if (collider1.isTrigger == true)
-            {
-                collider1.isTrigger = false;
-            }
+        Collider collider1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
+        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();
+        if (collider1.isTrigger == true)
+        {
+            collider1.isTrigger = false;
+        }
 
-            if (rigidbody1.useGravity == false)
-            {
-                rigidbody1.useGravity = true;
-            }
+        if (rigidbody1.useGravity == false)
+        {
+            rigidbody1.useGravity = true;
+        }
 
-            if (rigidbody1.isKinematic == true)
-            {
-                rigidbody1.isKinematic = false;
-            }
+        if (rigidbody1.isKinematic == true)
+        {
+            rigidbody1.isKinematic = false;
+        }
     }
 
     private void dragObject()
@@ -132,8 +132,7 @@ public class mainMechanic : MonoBehaviour
         collider.isTrigger = true;
         rigidbody.isKinematic = rigidbody.isKinematic = true;
         dragdObject.gameObject.transform.position = gameObject.transform.position;
-        dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f); 
+        dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
-
 }
