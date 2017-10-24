@@ -46,7 +46,10 @@ public class mainMechanic : MonoBehaviour
         // If the object detaches from the object, it can this way still become normal instead of bugging out.
 
         if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
             stopDraggingObject();
+            stopDraggingSlipper();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -100,19 +103,73 @@ public class mainMechanic : MonoBehaviour
                 }
             }
         }
+        else if (other.tag == "slipper")
+        {
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                dragSlipper();
+
+                if (!dragSoundPlayed)
+                {
+                    aSource.PlayOneShot(biteSound, 1f);
+                    dragSoundPlayed = true;
+                }
+            }
+        }
     }
 
     private void stopDraggingObject()
     {
         //Troels: Når der ikke er grebet fat i objektet mere, indikeres der med en lyd at der er blevet givet slip.
+        /*    if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                aSource.PlayOneShot(biteReleaseSound, 1f);
+                dragSoundPlayed = false;
+            }
+
+            Collider collider1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
+            Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();
+            if (collider1.isTrigger == true)
+            {
+                collider1.isTrigger = false;
+            }
+
+            if (rigidbody1.useGravity == false)
+            {
+                rigidbody1.useGravity = true;
+            }
+
+            if (rigidbody1.isKinematic == true)
+            {
+                rigidbody1.isKinematic = false;
+            }*/
+    }
+
+    private void dragObject()
+    {
+        /*      // Scriptet tager det objekt man vil trække i, og sætter dens position i verdenen til at være lig ens egen.
+
+              GameObject dragdObject = GameObject.Find("Draggable object(Clone)");
+              Collider collider = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
+              Rigidbody rigidbody = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();
+              ConstantForce forceObject = GameObject.FindGameObjectWithTag("draggable").GetComponent<ConstantForce>();
+              collider.isTrigger = true;
+              rigidbody.isKinematic = rigidbody.isKinematic = true;
+              dragdObject.gameObject.transform.position = gameObject.transform.position;
+              dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+              rigidbody.useGravity = false;*/
+    }
+
+    private void stopDraggingSlipper()
+    {
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             aSource.PlayOneShot(biteReleaseSound, 1f);
             dragSoundPlayed = false;
         }
 
-        Collider collider1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
-        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();
+        Collider collider1 = GameObject.FindGameObjectWithTag("slipper").GetComponent<Collider>();
+        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("slipper").GetComponent<Rigidbody>();
         if (collider1.isTrigger == true)
         {
             collider1.isTrigger = false;
@@ -129,14 +186,12 @@ public class mainMechanic : MonoBehaviour
         }
     }
 
-    private void dragObject()
+    private void dragSlipper()
     {
-        // Scriptet tager det objekt man vil trække i, og sætter dens position i verdenen til at være lig ens egen.
-
-        GameObject dragdObject = GameObject.Find("Draggable object(Clone)");
-        Collider collider = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
-        Rigidbody rigidbody = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();
-        ConstantForce forceObject = GameObject.FindGameObjectWithTag("draggable").GetComponent<ConstantForce>();
+        GameObject dragdObject = GameObject.FindGameObjectWithTag("slipper");
+        Collider collider = GameObject.FindGameObjectWithTag("slipper").GetComponent<Collider>();
+        Rigidbody rigidbody = GameObject.FindGameObjectWithTag("slipper").GetComponent<Rigidbody>();
+        ConstantForce forceObject = GameObject.FindGameObjectWithTag("slipper").GetComponent<ConstantForce>();
         collider.isTrigger = true;
         rigidbody.isKinematic = rigidbody.isKinematic = true;
         dragdObject.gameObject.transform.position = gameObject.transform.position;

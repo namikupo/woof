@@ -9,6 +9,7 @@ TagManager:
   - beforeTrampoline
   - trampoline
   - owner
+  - slipper
   layers:
   - Default
   - TransparentFX
