@@ -1,4 +1,12 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/scenes/ownerTestScene.unity
+=======
+<<<<<<< HEAD
+- path: Assets/scenes/Scene 1.unity
+=======
+- path: Assets/scenes/playTest.unity
+>>>>>>> Troels
+>>>>>>> master
   isLoaded: 1
   isActive: 1
