@@ -40,18 +40,24 @@ public class mainMechanic : MonoBehaviour
         volController = 1f;
     }
 
-    // Scriptet tager det objekt man vil trække i, og sætter dens position i verdenen til at være lig ens egen.
-
     private void Update()
     {
+        // This if statement is here, because the player can move the mouse faster than it drags the object.
+        // If the object detaches from the object, it can this way still become normal instead of bugging out.
+
         if (Input.GetKeyUp(KeyCode.Mouse1))
             stopDraggingObject();
     }
 
     private void OnTriggerStay(Collider other)
     {
+        // OnTriggerStay means that every frame that an object with a triggercollider is inside this collider, the OnTriggerStay is called.
+        // This is used to check whether the Crosshair object is inside an object that the player can either interact with or drag around.
+
         if (Input.GetKeyDown(KeyCode.Mouse0) && other.name == "Interactable object")
         {
+            // If the object is interactable, it destroys the object and spawning a new object at the old object's position
+
             Destroy(other.gameObject);
 
             if (other.tag == ("interactableObject"))
@@ -60,8 +66,6 @@ public class mainMechanic : MonoBehaviour
                 Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
                 aSource.PlayOneShot(changeSound, 1f);
             }
-
-            Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && other.name == "Interactable Static Object")
         {
@@ -74,7 +78,7 @@ public class mainMechanic : MonoBehaviour
             //Troels: Derudover skal der startes en lyd som indikere at objektet bliver grebet fat i.
 
             // Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
-            // Dette script vil blive ryddet op senere.
+            // Dette script vil blive skrevet om på et senere tidspunkt.
 
             if (Input.GetKey(KeyCode.Mouse1))
             {
@@ -86,18 +90,18 @@ public class mainMechanic : MonoBehaviour
                     dragSoundPlayed = true;
                 }
             }
-
-            //Troels: Når der ikke er grebet fat i objektet mere, indikeres der med en lyd at der er blevet givet slip.
-            if (Input.GetKeyUp(KeyCode.Mouse1))
-            {
-                aSource.PlayOneShot(biteReleaseSound, 1f);
-                dragSoundPlayed = false;
-            }
         }
     }
 
     private void stopDraggingObject()
     {
+        //Troels: Når der ikke er grebet fat i objektet mere, indikeres der med en lyd at der er blevet givet slip.
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            aSource.PlayOneShot(biteReleaseSound, 1f);
+            dragSoundPlayed = false;
+        }
+
         Collider collider1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
         Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();
         if (collider1.isTrigger == true)
@@ -118,6 +122,8 @@ public class mainMechanic : MonoBehaviour
 
     private void dragObject()
     {
+        // Scriptet tager det objekt man vil trække i, og sætter dens position i verdenen til at være lig ens egen.
+
         GameObject dragdObject = GameObject.Find("Draggable object(Clone)");
         Collider collider = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();

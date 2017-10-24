@@ -10,7 +10,8 @@ public class FirstPersonController : MonoBehaviour
 {
     // Author: Unity/Eskild Middelboe
     // Function: To control the player character using input, as well as controlling footstep sounds, headbobbing(not used) and a sprint feature(not used)
-    //
+    // The player is controlled by a character controller component, meaning that the main character is not affected by physics.
+    // To compensate for this, the player applied force to other objects when near them to simulate physics.
 
     [SerializeField] private bool m_IsWalking;
     [SerializeField] private float m_WalkSpeed;
@@ -78,6 +79,8 @@ public class FirstPersonController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // Eskild: Every frame the game updates the camera rotation according to the input.
+
         RotateView();
         // the jump state needs to read here to make sure it is not missed
         if (!m_Jump)

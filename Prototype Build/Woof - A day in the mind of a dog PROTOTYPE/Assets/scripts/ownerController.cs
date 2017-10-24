@@ -9,6 +9,7 @@ public class ownerController : MonoBehaviour
     // The script controls his actions, as well as the variables that controls his behavior.
 
     // Define animation & points in the world the owner has to go to.
+    // Defining the int variable for progression and which particlesystem that is used.
     private int love;
 
     [SerializeField]
@@ -30,9 +31,18 @@ public class ownerController : MonoBehaviour
 
     private void Update()
     {
-        if (love >= 7)
+        // When the owner has recieved enough love, he will become happy and the player reaches the end.
+        if (love == 7)
         {
             //Here goes the end/story progression
+            end();
+            love++;
         }
+    }
+
+    // This funct
+    private void end()
+    {
+        //Here is the
     }
 }
