@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/scenes/Scene 1.unity
+=======
+- path: Assets/scenes/playTest.unity
+>>>>>>> Troels
   isLoaded: 1
   isActive: 1

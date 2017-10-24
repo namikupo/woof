@@ -29,7 +29,7 @@ public class mainMechanic : MonoBehaviour
 
     public float volController;
     private bool dragSoundPlayed;
-
+    
     // Forfatter: Eskild Middelboe & Troels Jensen
     // Metode: Spilleren skal kunne forvandle objekter, samt samle objekter op og flytte dem.
     // De individuelle objekter der kan trækkes skal defineres på forhånd.
@@ -62,6 +62,11 @@ public class mainMechanic : MonoBehaviour
             }
 
             Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
+            { 
+            Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
+                aSource.PlayOneShot(changeSound, 1f);
+            }
+                Instantiate(sphere, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && other.name == "Interactable Static Object")
         {
@@ -75,7 +80,6 @@ public class mainMechanic : MonoBehaviour
 
             // Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
             // Dette script vil blive ryddet op senere.
-
             if (Input.GetKey(KeyCode.Mouse1))
             {
                 dragObject();
