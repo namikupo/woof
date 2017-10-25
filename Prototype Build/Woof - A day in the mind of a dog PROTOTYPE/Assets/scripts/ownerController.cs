@@ -24,7 +24,7 @@ public class ownerController : MonoBehaviour
     {
         // This function gets called when the right object enters his outer sphere-collider
         // This is where the owner gets cheered up.
-        Instantiate(hearts,  new Vector3(this.transform.position.x,this.transform.position.y + 3, this.transform.position.z), Quaternion.Euler(270f, 0f, 0f));
+        Instantiate(hearts, new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), Quaternion.Euler(270f, 0f, 0f));
 
         love++;
     }
@@ -32,7 +32,7 @@ public class ownerController : MonoBehaviour
     private void Update()
     {
         // When the owner has recieved enough love, he will become happy and the player reaches the end.
-        if (love == 7)
+        if (love == 4)
         {
             //Here goes the end/story progression
             end();

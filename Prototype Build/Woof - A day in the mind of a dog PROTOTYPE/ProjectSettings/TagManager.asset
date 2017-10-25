@@ -10,6 +10,11 @@ TagManager:
   - trampoline
   - owner
   - slipper
+  - newspaper
+  - sock
+  - dogToy
+  - teddy
+  - locket
   layers:
   - Default
   - TransparentFX
