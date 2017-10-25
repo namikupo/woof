@@ -282,22 +282,22 @@ public class mainMechanic : MonoBehaviour
 
     private void stopDraggingNewspaper()
     {
-        Collider collider1 = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Collider>();
-        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Rigidbody>();
-        if (collider1.isTrigger == true)
-        {
-            collider1.isTrigger = false;
-        }
+        /*  Collider collider1 = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Collider>();
+          Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Rigidbody>();
+          if (collider1.isTrigger == true)
+          {
+              collider1.isTrigger = false;
+          }
 
-        if (rigidbody1.useGravity == false)
-        {
-            rigidbody1.useGravity = true;
-        }
+          if (rigidbody1.useGravity == false)
+          {
+              rigidbody1.useGravity = true;
+          }
 
-        if (rigidbody1.isKinematic == true)
-        {
-            rigidbody1.isKinematic = false;
-        }
+          if (rigidbody1.isKinematic == true)
+          {
+              rigidbody1.isKinematic = false;
+          }*/
     }
 
     private void dragSock()
