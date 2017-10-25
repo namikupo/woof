@@ -263,7 +263,7 @@ public class mainMechanic : MonoBehaviour
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("slipper").GetComponent<Rigidbody>();
         collider.isTrigger = true;
         rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = gameObject.transform.position;
+        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
@@ -275,7 +275,7 @@ public class mainMechanic : MonoBehaviour
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Rigidbody>();
         collider.isTrigger = true;
         rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = gameObject.transform.position;
+        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
@@ -307,7 +307,7 @@ public class mainMechanic : MonoBehaviour
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("sock").GetComponent<Rigidbody>();
         collider.isTrigger = true;
         rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = gameObject.transform.position;
+        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
@@ -339,7 +339,7 @@ public class mainMechanic : MonoBehaviour
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("dogToy").GetComponent<Rigidbody>();
         collider.isTrigger = true;
         rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = gameObject.transform.position;
+        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
@@ -371,7 +371,7 @@ public class mainMechanic : MonoBehaviour
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("teddy").GetComponent<Rigidbody>();
         collider.isTrigger = true;
         rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = gameObject.transform.position;
+        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
@@ -403,7 +403,7 @@ public class mainMechanic : MonoBehaviour
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("locket").GetComponent<Rigidbody>();
         collider.isTrigger = true;
         rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = gameObject.transform.position;
+        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
