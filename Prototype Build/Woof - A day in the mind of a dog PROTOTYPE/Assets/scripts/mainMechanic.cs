@@ -103,105 +103,193 @@ public class mainMechanic : MonoBehaviour
             Destroy(other.gameObject);
             Instantiate(trampoline, other.transform.position, Quaternion.Euler(0f, 0f, 0f));
         }
-        else if (other.tag == "draggable")
+
+        //Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
+        //Troels: Derudover skal der startes en lyd som indikere at objektet bliver grebet fat i.
+
+        // Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
+        // Dette script vil blive skrevet om på et senere tidspunkt.
+
+        // Dette script vil blive ryddet op senere.
+
+        switch (other.tag)
         {
-            //Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
-            //Troels: Derudover skal der startes en lyd som indikere at objektet bliver grebet fat i.
-
-            // Der skal opsættes en seperat metode til at dragge hvert objekt (måske), derfor foreslås det at det ikke er så mange objekter der skal trækkes.
-            // Dette script vil blive skrevet om på et senere tidspunkt.
-
-            // Dette script vil blive ryddet op senere.
-
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                dragObject();
-
-                if (!dragSoundPlayed)
+            case "slipper":
                 {
-                    aSource.PlayOneShot(biteSound, 1f);
-                    dragSoundPlayed = true;
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        dragSlipper();
+
+                        if (!dragSoundPlayed)
+                        {
+                            aSource.PlayOneShot(biteSound, 1f);
+                            dragSoundPlayed = true;
+                        }
+                    }
+
+                    return;
                 }
+            case "newspaper":
+                {
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        dragNewspaper();
+
+                        if (!dragSoundPlayed)
+                        {
+                            aSource.PlayOneShot(biteSound, 1f);
+                            dragSoundPlayed = true;
+                        }
+                    }
+                    return;
+                }
+            case "sock":
+                {
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        dragSock();
+
+                        if (!dragSoundPlayed)
+                        {
+                            aSource.PlayOneShot(biteSound, 1f);
+                            dragSoundPlayed = true;
+                        }
+                    }
+                    return;
+                }
+            case "dogToy":
+                {
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        dragDogToy();
+
+                        if (!dragSoundPlayed)
+                        {
+                            aSource.PlayOneShot(biteSound, 1f);
+                            dragSoundPlayed = true;
+                        }
+                    }
+                    return;
+                }
+            case "teddy":
+                {
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        dragTeddy();
+
+                        if (!dragSoundPlayed)
+                        {
+                            aSource.PlayOneShot(biteSound, 1f);
+                            dragSoundPlayed = true;
+                        }
+                    }
+                    return;
+                }
+            case "locket":
+                {
+                    if (Input.GetKey(KeyCode.Mouse1))
+                    {
+                        dragLocket();
+
+                        if (!dragSoundPlayed)
+                        {
+                            aSource.PlayOneShot(biteSound, 1f);
+                            dragSoundPlayed = true;
+                        }
+                    }
+                    return;
+                }
+        }
+
+        /*
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            dragObject();
+
+            if (!dragSoundPlayed)
+            {
+                aSource.PlayOneShot(biteSound, 1f);
+                dragSoundPlayed = true;
             }
         }
-        else if (other.tag == "slipper")
+    }
+    else if (other.tag == "slipper")
+    {
+        if (Input.GetKey(KeyCode.Mouse1) && dragging == 1)
         {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                dragSlipper();
+            dragSlipper();
 
-                if (!dragSoundPlayed)
-                {
-                    aSource.PlayOneShot(biteSound, 1f);
-                    dragSoundPlayed = true;
-                }
+            if (!dragSoundPlayed)
+            {
+                aSource.PlayOneShot(biteSound, 1f);
+                dragSoundPlayed = true;
             }
         }
-        else if (other.tag == "newspaper")
+    }
+    else if (other.tag == "newspaper")
+    {
+        if (Input.GetKey(KeyCode.Mouse1) && dragging == 2)
         {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                dragNewspaper();
+            dragNewspaper();
 
-                if (!dragSoundPlayed)
-                {
-                    aSource.PlayOneShot(biteSound, 1f);
-                    dragSoundPlayed = true;
-                }
+            if (!dragSoundPlayed)
+            {
+                aSource.PlayOneShot(biteSound, 1f);
+                dragSoundPlayed = true;
             }
         }
-        else if (other.tag == "sock")
+    }
+    else if (other.tag == "sock")
+    {
+        if (Input.GetKey(KeyCode.Mouse1) && dragging == 3)
         {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                dragSock();
+            dragSock();
 
-                if (!dragSoundPlayed)
-                {
-                    aSource.PlayOneShot(biteSound, 1f);
-                    dragSoundPlayed = true;
-                }
+            if (!dragSoundPlayed)
+            {
+                aSource.PlayOneShot(biteSound, 1f);
+                dragSoundPlayed = true;
             }
         }
-        else if (other.tag == "dogToy")
+    }
+    else if (other.tag == "dogToy")
+    {
+        if (Input.GetKey(KeyCode.Mouse1) && dragging == 4)
         {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                dragDogToy();
+            dragDogToy();
 
-                if (!dragSoundPlayed)
-                {
-                    aSource.PlayOneShot(biteSound, 1f);
-                    dragSoundPlayed = true;
-                }
+            if (!dragSoundPlayed)
+            {
+                aSource.PlayOneShot(biteSound, 1f);
+                dragSoundPlayed = true;
             }
         }
-        else if (other.tag == "teddy")
+    }
+    else if (other.tag == "teddy")
+    {
+        if (Input.GetKey(KeyCode.Mouse1) && dragging == 5)
         {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                dragTeddy();
+            dragTeddy();
 
-                if (!dragSoundPlayed)
-                {
-                    aSource.PlayOneShot(biteSound, 1f);
-                    dragSoundPlayed = true;
-                }
+            if (!dragSoundPlayed)
+            {
+                aSource.PlayOneShot(biteSound, 1f);
+                dragSoundPlayed = true;
             }
         }
-        else if (other.tag == "locket")
+    }
+    else if (other.tag == "locket")
+    {
+        if (Input.GetKey(KeyCode.Mouse1) && dragging == 6)
         {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                dragLocket();
+            dragLocket();
 
-                if (!dragSoundPlayed)
-                {
-                    aSource.PlayOneShot(biteSound, 1f);
-                    dragSoundPlayed = true;
-                }
+            if (!dragSoundPlayed)
+            {
+                aSource.PlayOneShot(biteSound, 1f);
+                dragSoundPlayed = true;
             }
-        }
+        }*/
     }
 
     private void stopDraggingObject()
@@ -215,10 +303,6 @@ public class mainMechanic : MonoBehaviour
 
             Collider collider1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Collider>();
             Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("draggable").GetComponent<Rigidbody>();
-            if (collider1.isTrigger == true)
-            {
-                collider1.isTrigger = false;
-            }
 
             if (rigidbody1.useGravity == false)
             {
@@ -254,12 +338,7 @@ public class mainMechanic : MonoBehaviour
             dragSoundPlayed = false;
         }
 
-        Collider collider1 = GameObject.FindGameObjectWithTag("slipper").GetComponent<Collider>();
         Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("slipper").GetComponent<Rigidbody>();
-        if (collider1.isTrigger == true)
-        {
-            collider1.isTrigger = false;
-        }
 
         if (rigidbody1.useGravity == false)
         {
@@ -275,11 +354,8 @@ public class mainMechanic : MonoBehaviour
     private void dragSlipper()
     {
         GameObject dragdObject = GameObject.FindGameObjectWithTag("slipper");
-        Collider collider = GameObject.FindGameObjectWithTag("slipper").GetComponent<Collider>();
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("slipper").GetComponent<Rigidbody>();
-        collider.isTrigger = true;
-        rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
+        rigidbody.position = (new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
@@ -287,55 +363,39 @@ public class mainMechanic : MonoBehaviour
     private void dragNewspaper()
     {
         GameObject dragdObject = GameObject.FindGameObjectWithTag("newspaper");
-        Collider collider = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Collider>();
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Rigidbody>();
-        collider.isTrigger = true;
-        rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
+        rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
 
     private void stopDraggingNewspaper()
     {
-        /*  Collider collider1 = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Collider>();
-          Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Rigidbody>();
-          if (collider1.isTrigger == true)
-          {
-              collider1.isTrigger = false;
-          }
+        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Rigidbody>();
 
-          if (rigidbody1.useGravity == false)
-          {
-              rigidbody1.useGravity = true;
-          }
+        if (rigidbody1.useGravity == false)
+        {
+            rigidbody1.useGravity = true;
+        }
 
-          if (rigidbody1.isKinematic == true)
-          {
-              rigidbody1.isKinematic = false;
-          }*/
+        if (rigidbody1.isKinematic == true)
+        {
+            rigidbody1.isKinematic = false;
+        }
     }
 
     private void dragSock()
     {
         GameObject dragdObject = GameObject.FindGameObjectWithTag("sock");
-        Collider collider = GameObject.FindGameObjectWithTag("sock").GetComponent<Collider>();
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("sock").GetComponent<Rigidbody>();
-        collider.isTrigger = true;
-        rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
+        rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
 
     private void stopDraggingSock()
     {
-        Collider collider1 = GameObject.FindGameObjectWithTag("sock").GetComponent<Collider>();
         Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("sock").GetComponent<Rigidbody>();
-        if (collider1.isTrigger == true)
-        {
-            collider1.isTrigger = false;
-        }
 
         if (rigidbody1.useGravity == false)
         {
@@ -351,23 +411,15 @@ public class mainMechanic : MonoBehaviour
     private void dragDogToy()
     {
         GameObject dragdObject = GameObject.FindGameObjectWithTag("dogToy");
-        Collider collider = GameObject.FindGameObjectWithTag("dogToy").GetComponent<Collider>();
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("dogToy").GetComponent<Rigidbody>();
-        collider.isTrigger = true;
-        rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
+        rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
 
     private void stopDraggingDogToy()
     {
-        Collider collider1 = GameObject.FindGameObjectWithTag("dogToy").GetComponent<Collider>();
         Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("dogToy").GetComponent<Rigidbody>();
-        if (collider1.isTrigger == true)
-        {
-            collider1.isTrigger = false;
-        }
 
         if (rigidbody1.useGravity == false)
         {
@@ -383,23 +435,15 @@ public class mainMechanic : MonoBehaviour
     private void dragTeddy()
     {
         GameObject dragdObject = GameObject.FindGameObjectWithTag("teddy");
-        Collider collider = GameObject.FindGameObjectWithTag("teddy").GetComponent<Collider>();
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("teddy").GetComponent<Rigidbody>();
-        collider.isTrigger = true;
-        rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
+        rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
 
     private void stopDraggingTeddy()
     {
-        Collider collider1 = GameObject.FindGameObjectWithTag("teddy").GetComponent<Collider>();
         Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("teddy").GetComponent<Rigidbody>();
-        if (collider1.isTrigger == true)
-        {
-            collider1.isTrigger = false;
-        }
 
         if (rigidbody1.useGravity == false)
         {
@@ -415,23 +459,15 @@ public class mainMechanic : MonoBehaviour
     private void dragLocket()
     {
         GameObject dragdObject = GameObject.FindGameObjectWithTag("locket");
-        Collider collider = GameObject.FindGameObjectWithTag("locket").GetComponent<Collider>();
         Rigidbody rigidbody = GameObject.FindGameObjectWithTag("locket").GetComponent<Rigidbody>();
-        collider.isTrigger = true;
-        rigidbody.isKinematic = rigidbody.isKinematic = true;
-        dragdObject.gameObject.transform.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
+        rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
     }
 
     private void stopDraggingLocket()
     {
-        Collider collider1 = GameObject.FindGameObjectWithTag("locket").GetComponent<Collider>();
         Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("locket").GetComponent<Rigidbody>();
-        if (collider1.isTrigger == true)
-        {
-            collider1.isTrigger = false;
-        }
 
         if (rigidbody1.useGravity == false)
         {

@@ -133,10 +133,7 @@ public class FirstPersonController : MonoBehaviour
 
             if (m_Jump)
             {
-                m_MoveDir.y = JumpSpeed;
-                PlayJumpSound();
-                m_Jump = false;
-                m_Jumping = true;
+                dogJump();
             }
         }
         else
@@ -149,6 +146,14 @@ public class FirstPersonController : MonoBehaviour
         UpdateCameraPosition(speed);
 
         m_MouseLook.UpdateCursorLock();
+    }
+
+    public void dogJump()
+    {
+        m_MoveDir.y = JumpSpeed;
+        PlayJumpSound();
+        m_Jump = false;
+        m_Jumping = true;
     }
 
     private void PlayJumpSound()
