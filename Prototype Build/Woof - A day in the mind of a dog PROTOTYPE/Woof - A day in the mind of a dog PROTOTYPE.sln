@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woof - A day in the mind of a dog PROTOTYPE.Plugins", "Woof - A day in the mind of a dog PROTOTYPE.Plugins.csproj", "{C907E85B-E8AE-D047-79B1-8D73F48190DE}"
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woof - A day in the mind of a dog PROTOTYPE.CSharp.Plugins", "Woof - A day in the mind of a dog PROTOTYPE.CSharp.Plugins.csproj", "{182265DD-8448-E2AB-8629-2079C2205D1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woof - A day in the mind of a dog PROTOTYPE", "Woof - A day in the mind of a dog PROTOTYPE.csproj", "{5E5D6EC5-8E42-5915-7F9E-08030F25A03A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woof - A day in the mind of a dog PROTOTYPE.CSharp", "Woof - A day in the mind of a dog PROTOTYPE.CSharp.csproj", "{156F25C4-9D4E-FE4F-F9E1-5B36FA9623E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woof - A day in the mind of a dog PROTOTYPE.Editor.Plugins", "Woof - A day in the mind of a dog PROTOTYPE.Editor.Plugins.csproj", "{F4EF66E8-416E-1465-31EC-1958A741ED07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Woof - A day in the mind of a dog PROTOTYPE.CSharp.Editor.Plugins", "Woof - A day in the mind of a dog PROTOTYPE.CSharp.Editor.Plugins.csproj", "{DE90F8CC-DE1D-266A-3DC1-50D1339B5097}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,18 +13,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C907E85B-E8AE-D047-79B1-8D73F48190DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C907E85B-E8AE-D047-79B1-8D73F48190DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C907E85B-E8AE-D047-79B1-8D73F48190DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C907E85B-E8AE-D047-79B1-8D73F48190DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E5D6EC5-8E42-5915-7F9E-08030F25A03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E5D6EC5-8E42-5915-7F9E-08030F25A03A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E5D6EC5-8E42-5915-7F9E-08030F25A03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E5D6EC5-8E42-5915-7F9E-08030F25A03A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4EF66E8-416E-1465-31EC-1958A741ED07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4EF66E8-416E-1465-31EC-1958A741ED07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4EF66E8-416E-1465-31EC-1958A741ED07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4EF66E8-416E-1465-31EC-1958A741ED07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182265DD-8448-E2AB-8629-2079C2205D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182265DD-8448-E2AB-8629-2079C2205D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182265DD-8448-E2AB-8629-2079C2205D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182265DD-8448-E2AB-8629-2079C2205D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156F25C4-9D4E-FE4F-F9E1-5B36FA9623E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156F25C4-9D4E-FE4F-F9E1-5B36FA9623E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156F25C4-9D4E-FE4F-F9E1-5B36FA9623E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156F25C4-9D4E-FE4F-F9E1-5B36FA9623E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE90F8CC-DE1D-266A-3DC1-50D1339B5097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE90F8CC-DE1D-266A-3DC1-50D1339B5097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE90F8CC-DE1D-266A-3DC1-50D1339B5097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE90F8CC-DE1D-266A-3DC1-50D1339B5097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

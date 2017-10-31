@@ -8,6 +8,7 @@ TagManager:
   - draggable
   - beforeTrampoline
   - trampoline
+  - TextureChange
   layers:
   - Default
   - TransparentFX
