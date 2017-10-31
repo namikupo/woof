@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/scenes/playTest.unity
+    path: Assets/scenes/playTest happy.unity
+    guid: a2fd3ee3c4e35c245b5f7b494cac3ba4
+  - enabled: 1
+    path: Assets/scenes/playTest depressed.unity
     guid: 90d741f5ce73193429e91817cda377d9

@@ -134,9 +134,22 @@ public class FirstPersonController : MonoBehaviour
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
         // A reset button in-case the scene needs to be reset
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.F5))
         {
+            PlayerPrefs.SetInt("ownerSad", 0);
             SceneManager.LoadScene(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            PlayerPrefs.SetInt("ownerSad", 1);
+            SceneManager.LoadScene(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PlayerPrefs.DeleteAll();
+            Application.Quit();
         }
     }
 

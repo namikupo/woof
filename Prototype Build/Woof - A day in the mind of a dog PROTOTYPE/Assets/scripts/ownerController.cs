@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ownerController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ownerController : MonoBehaviour
     private GameObject doggoToy;
     private Rigidbody doggoToyRB;
 
+    private Animator anim;
+
     [SerializeField]
     private mainMechanic mainMec;
 
@@ -26,10 +29,18 @@ public class ownerController : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetInt("ownerSad") == 1)
+        {
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ownerSad", 0);
+        }
+
         doggoToy = GameObject.FindWithTag("dogToy");
         doggoToyRB = doggoToy.GetComponent<Rigidbody>();
-        depressed = false;
-        fetches = 0;
+        GameObject ownerChar = GameObject.Find("SittingOwner");
+        anim = ownerChar.GetComponent<Animator>();
     }
 
     private void Awake()
@@ -41,20 +52,25 @@ public class ownerController : MonoBehaviour
     public void fetchQuest()
     {
         mainMec.canDrag = false;
-        doggoToy.transform.position = (new Vector3(this.transform.position.x + 5f, this.transform.position.y + 8f, this.transform.position.z + 1f));
+        doggoToy.transform.position = (new Vector3(this.transform.position.x + 1f, this.transform.position.y + 4f, this.transform.position.z + 1f));
         doggoToyRB.isKinematic = true;
-        StartCoroutine(throwing());
         fetches++;
+        StartCoroutine(pickingUp());
     }
 
     // The owner then throws the dog toy
     private IEnumerator throwing()
     {
-        yield return new WaitForSecondsRealtime(2.5f);
+        //this.transform.rotation = Quaternion.Euler(0, Random.Range(60, 240), 0);
+        anim.SetInteger("throw", 1);
+        yield return new WaitForSecondsRealtime(1f);
+
         doggoToyRB.isKinematic = false;
         doggoToyRB.useGravity = true;
         mainMec.canDrag = true;
-        doggoToyRB.AddRelativeForce(this.transform.forward * Random.Range(10f, 15f)s, ForceMode.Impulse);
+        doggoToyRB.AddRelativeForce(this.transform.forward * Random.Range(10f, 15f), ForceMode.Impulse);
+        //this.transform.rotation = Quaternion.Euler(0, 180, 0);
+        anim.SetInteger("throw", 0);
     }
 
     public void cheeredUp()
@@ -62,17 +78,43 @@ public class ownerController : MonoBehaviour
         // This function gets called when the right object enters his outer sphere-collider
         // This is where the owner gets cheered up.
         Instantiate(hearts, new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), Quaternion.Euler(270f, 0f, 0f));
-
+        StartCoroutine(Petting());
         love++;
+    }
+
+    private IEnumerator pickingUp()
+    {
+        anim.SetInteger("pickUp", 1);
+        yield return new WaitForSecondsRealtime(1.7f);
+        StartCoroutine(throwing());
+        anim.SetInteger("pickUp", 0);
+    }
+
+    private IEnumerator Petting()
+    {
+        anim.SetInteger("pet", 1);
+        yield return new WaitForSecondsRealtime(0.7f);
+        anim.SetInteger("pet", 0);
     }
 
     private void Update()
     {
-        if (fetches >= 6)
+        if (PlayerPrefs.GetInt("ownerSad") == 1)
+        {
+            depressed = true;
+        }
+
+        if (PlayerPrefs.GetInt("ownerSad") == 0)
+        {
+            depressed = false;
+        }
+
+        if (fetches >= 6 && PlayerPrefs.GetInt("ownerSad") == 0)
         {
             // Insert method that makes the owner pick up the phone, and then get depressed afterwards.
             // For now it is an instant transition
-            depressed = true;
+            PlayerPrefs.SetInt("ownerSad", 1);
+            SceneManager.LoadScene(1);
         }
 
         // When the owner has recieved enough love, he will become happy and the player reaches the end.

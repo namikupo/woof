@@ -57,16 +57,25 @@ public class mainMechanic : MonoBehaviour
         // This if statement is here, because the player can move the mouse faster than it drags the object.
         // If the object detaches from the object, it can this way still become normal instead of bugging out.
 
-        /* if (Input.GetKeyUp(KeyCode.Mouse1))
-         {
-             stopDraggingObject();
-             stopDraggingSlipper();
-             stopDraggingNewspaper();
-             stopDraggingSock();
-             stopDraggingDogToy();
-             stopDraggingTeddy();
-             stopDraggingLocket();
-         }*/
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            // stopDraggingObject();
+            stopDraggingSlipper();
+            stopDraggingNewspaper();
+            stopDraggingSock();
+            stopDraggingDogToy();
+            stopDraggingTeddy();
+            stopDraggingLocket();
+        }
+        else if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            stopDraggingSlipper();
+            stopDraggingNewspaper();
+            stopDraggingSock();
+            stopDraggingDogToy();
+            stopDraggingTeddy();
+            stopDraggingLocket();
+        }
 
         if (canMove == false)
         {
@@ -97,7 +106,7 @@ public class mainMechanic : MonoBehaviour
         // OnTriggerStay means that every frame that an object with a triggercollider is inside this collider, the OnTriggerStay is called.
         // This is used to check whether the Crosshair object is inside an object that the player can either interact with or drag around.
 
-        if (Input.GetKeyUp(KeyCode.Mouse1))
+        /*if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             stopDraggingSlipper();
             stopDraggingNewspaper();
@@ -105,7 +114,7 @@ public class mainMechanic : MonoBehaviour
             stopDraggingDogToy();
             stopDraggingTeddy();
             stopDraggingLocket();
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && other.name == "Interactable object")
         {
@@ -233,6 +242,7 @@ public class mainMechanic : MonoBehaviour
                     // The player can't move, and the dies.
                     if (Input.GetKeyDown(KeyCode.Mouse1))
                     {
+                        other.transform.rotation = Quaternion.Euler(0, 0, 90);
                         canMove = false;
                         gameOver();
                     }
@@ -374,7 +384,7 @@ public class mainMechanic : MonoBehaviour
         aSource.PlayOneShot(biteReleaseSound, 1f);
         dragSoundPlayed = false;
 
-        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("slipper").GetComponent<Rigidbody>();
+        Rigidbody rigidbody1 = GameObject.Find("Slipper").GetComponent<Rigidbody>();
         rigidbody1.gameObject.layer = 0;
         if (rigidbody1.useGravity == false)
         {
@@ -389,8 +399,8 @@ public class mainMechanic : MonoBehaviour
 
     private void dragSlipper()
     {
-        GameObject dragdObject = GameObject.FindGameObjectWithTag("slipper");
-        Rigidbody rigidbody = GameObject.FindGameObjectWithTag("slipper").GetComponent<Rigidbody>();
+        GameObject dragdObject = GameObject.Find("Slipper");
+        Rigidbody rigidbody = GameObject.Find("Slipper").GetComponent<Rigidbody>();
         dragdObject.layer = 8;
         rigidbody.position = (new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -399,8 +409,8 @@ public class mainMechanic : MonoBehaviour
 
     private void dragNewspaper()
     {
-        GameObject dragdObject = GameObject.FindGameObjectWithTag("newspaper");
-        Rigidbody rigidbody = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Rigidbody>();
+        GameObject dragdObject = GameObject.Find("News");
+        Rigidbody rigidbody = GameObject.Find("News").GetComponent<Rigidbody>();
         dragdObject.layer = 8;
         rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -412,7 +422,7 @@ public class mainMechanic : MonoBehaviour
         aSource.PlayOneShot(biteReleaseSound, 1f);
         dragSoundPlayed = false;
 
-        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("newspaper").GetComponent<Rigidbody>();
+        Rigidbody rigidbody1 = GameObject.Find("News").GetComponent<Rigidbody>();
         rigidbody1.gameObject.layer = 0;
         if (rigidbody1.useGravity == false)
         {
@@ -427,8 +437,8 @@ public class mainMechanic : MonoBehaviour
 
     private void dragSock()
     {
-        GameObject dragdObject = GameObject.FindGameObjectWithTag("sock");
-        Rigidbody rigidbody = GameObject.FindGameObjectWithTag("sock").GetComponent<Rigidbody>();
+        GameObject dragdObject = GameObject.Find("MissingSock");
+        Rigidbody rigidbody = GameObject.Find("MissingSock").GetComponent<Rigidbody>();
         dragdObject.layer = 8;
         rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -440,7 +450,7 @@ public class mainMechanic : MonoBehaviour
         aSource.PlayOneShot(biteReleaseSound, 1f);
         dragSoundPlayed = false;
 
-        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("sock").GetComponent<Rigidbody>();
+        Rigidbody rigidbody1 = GameObject.Find("MissingSock").GetComponent<Rigidbody>();
         rigidbody1.gameObject.layer = 0;
         if (rigidbody1.useGravity == false)
         {
@@ -455,13 +465,13 @@ public class mainMechanic : MonoBehaviour
 
     private void dragDogToy()
     {
-        GameObject dragdObject = GameObject.FindGameObjectWithTag("dogToy");
-        Rigidbody rigidbody = GameObject.FindGameObjectWithTag("dogToy").GetComponent<Rigidbody>();
+        GameObject dragdObject = GameObject.Find("DoggyToy");
+        Rigidbody rigidbody = GameObject.Find("DoggyToy").GetComponent<Rigidbody>();
         dragdObject.layer = 8;
         rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
-        // rigidbody.isKinematic = true;
+        //rigidbody.isKinematic = true;
     }
 
     public void stopDraggingDogToy()
@@ -469,7 +479,7 @@ public class mainMechanic : MonoBehaviour
         aSource.PlayOneShot(biteReleaseSound, 1f);
         dragSoundPlayed = false;
 
-        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("dogToy").GetComponent<Rigidbody>();
+        Rigidbody rigidbody1 = GameObject.Find("DoggyToy").GetComponent<Rigidbody>();
         rigidbody1.gameObject.layer = 0;
         if (rigidbody1.useGravity == false && canDrag == true)
         {
@@ -484,8 +494,8 @@ public class mainMechanic : MonoBehaviour
 
     private void dragTeddy()
     {
-        GameObject dragdObject = GameObject.FindGameObjectWithTag("teddy");
-        Rigidbody rigidbody = GameObject.FindGameObjectWithTag("teddy").GetComponent<Rigidbody>();
+        GameObject dragdObject = GameObject.Find("Teddy");
+        Rigidbody rigidbody = GameObject.Find("Teddy").GetComponent<Rigidbody>();
         dragdObject.layer = 8;
         rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -497,7 +507,7 @@ public class mainMechanic : MonoBehaviour
         aSource.PlayOneShot(biteReleaseSound, 1f);
         dragSoundPlayed = false;
 
-        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("teddy").GetComponent<Rigidbody>();
+        Rigidbody rigidbody1 = GameObject.Find("Teddy").GetComponent<Rigidbody>();
         rigidbody1.gameObject.layer = 0;
         if (rigidbody1.useGravity == false)
         {
@@ -512,8 +522,8 @@ public class mainMechanic : MonoBehaviour
 
     private void dragLocket()
     {
-        GameObject dragdObject = GameObject.FindGameObjectWithTag("locket");
-        Rigidbody rigidbody = GameObject.FindGameObjectWithTag("locket").GetComponent<Rigidbody>();
+        GameObject dragdObject = GameObject.Find("Locket");
+        Rigidbody rigidbody = GameObject.Find("Locket").GetComponent<Rigidbody>();
         dragdObject.layer = 8;
         rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -524,7 +534,7 @@ public class mainMechanic : MonoBehaviour
     {
         aSource.PlayOneShot(biteReleaseSound, 1f);
         dragSoundPlayed = false;
-        Rigidbody rigidbody1 = GameObject.FindGameObjectWithTag("locket").GetComponent<Rigidbody>();
+        Rigidbody rigidbody1 = GameObject.Find("Locket").GetComponent<Rigidbody>();
         rigidbody1.gameObject.layer = 0;
         if (rigidbody1.useGravity == false)
         {
@@ -539,6 +549,7 @@ public class mainMechanic : MonoBehaviour
 
     public void gameOver()
     {
+        ownerCon.depressed = false;
         dogCam.transform.rotation = Quaternion.Slerp(transform.rotation, (ownerCon.gameObject.transform.rotation *= Quaternion.Euler(180f, 180f, 180f)), Time.deltaTime * 1.5f);
     }
 }
