@@ -27,9 +27,17 @@ public class mainMechanic : MonoBehaviour
     [SerializeField]
     private AudioSource aSource;
 
+    [SerializeField]
+    public FirstPersonController firPerCon;
+
+    [SerializeField]
+    private ownerController ownerCon;
+
+    private Camera dogCam;
     public float volController;
     private bool dragSoundPlayed;
     public bool canDrag;
+    public bool canMove;
 
     // Forfatter: Eskild Middelboe & Troels Jensen
     // Metode: Spilleren skal kunne forvandle objekter, samt samle objekter op og flytte dem.
@@ -40,6 +48,8 @@ public class mainMechanic : MonoBehaviour
         aSource = GetComponent<AudioSource>();
         volController = 1f;
         canDrag = true;
+        dogCam = Camera.main;
+        canMove = true;
     }
 
     private void Update()
@@ -57,6 +67,13 @@ public class mainMechanic : MonoBehaviour
              stopDraggingTeddy();
              stopDraggingLocket();
          }*/
+
+        if (canMove == false)
+        {
+            firPerCon.WalkSpeed = 0f;
+            firPerCon.RunSpeed = 0f;
+            firPerCon.JumpSpeed = 0f;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -208,6 +225,16 @@ public class mainMechanic : MonoBehaviour
                             aSource.PlayOneShot(biteSound, 1f);
                             dragSoundPlayed = true;
                         }
+                    }
+                    return;
+                }
+            case "vase":
+                {
+                    // The player can't move, and the dies.
+                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    {
+                        canMove = false;
+                        gameOver();
                     }
                     return;
                 }
@@ -434,7 +461,7 @@ public class mainMechanic : MonoBehaviour
         rigidbody.position = (new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y - 0.2f), gameObject.transform.position.z));
         dragdObject.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rigidbody.useGravity = false;
-        rigidbody.isKinematic = true;
+        // rigidbody.isKinematic = true;
     }
 
     public void stopDraggingDogToy()
@@ -508,5 +535,10 @@ public class mainMechanic : MonoBehaviour
         {
             rigidbody1.isKinematic = false;
         }
+    }
+
+    public void gameOver()
+    {
+        dogCam.transform.rotation = Quaternion.Slerp(transform.rotation, (ownerCon.gameObject.transform.rotation *= Quaternion.Euler(180f, 180f, 180f)), Time.deltaTime * 1.5f);
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(AudioSource))]
@@ -61,6 +62,32 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    public float WalkSpeed
+    {
+        get
+        {
+            return m_WalkSpeed;
+        }
+
+        set
+        {
+            m_WalkSpeed = value;
+        }
+    }
+
+    public float RunSpeed
+    {
+        get
+        {
+            return m_RunSpeed;
+        }
+
+        set
+        {
+            m_RunSpeed = value;
+        }
+    }
+
     // Use this for initialization
     private void Start()
     {
@@ -74,6 +101,10 @@ public class FirstPersonController : MonoBehaviour
         m_Jumping = false;
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform);
+
+        // Need to declare variables in order to change them via scripts - Eskild
+        m_WalkSpeed = 8f;
+        m_RunSpeed = 8f;
     }
 
     // Update is called once per frame
@@ -101,6 +132,12 @@ public class FirstPersonController : MonoBehaviour
         }
 
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+        // A reset button in-case the scene needs to be reset
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private void PlayLandingSound()
@@ -233,7 +270,7 @@ public class FirstPersonController : MonoBehaviour
         m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
         // set the desired speed to be walking or running
-        speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+        speed = m_IsWalking ? WalkSpeed : RunSpeed;
         m_Input = new Vector2(horizontal, vertical);
 
         // normalize input if it exceeds 1 in combined length:

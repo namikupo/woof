@@ -15,6 +15,7 @@ TagManager:
   - dogToy
   - teddy
   - locket
+  - vase
   layers:
   - Default
   - TransparentFX

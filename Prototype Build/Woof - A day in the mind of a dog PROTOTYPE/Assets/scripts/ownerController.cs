@@ -54,7 +54,7 @@ public class ownerController : MonoBehaviour
         doggoToyRB.isKinematic = false;
         doggoToyRB.useGravity = true;
         mainMec.canDrag = true;
-        doggoToyRB.AddForce(this.transform.forward * 14f, ForceMode.Impulse);
+        doggoToyRB.AddRelativeForce(this.transform.forward * Random.Range(10f, 15f)s, ForceMode.Impulse);
     }
 
     public void cheeredUp()
