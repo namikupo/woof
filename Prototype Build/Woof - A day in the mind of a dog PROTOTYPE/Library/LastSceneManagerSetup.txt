@@ -1,8 +1,12 @@
 sceneSetups:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - path: Assets/scenes/AnimatedOwner.unity
 =======
 - path: Assets/scenes/playTest.unity
+>>>>>>> master
+=======
+- path: Assets/scenes/playTest happy.unity
 >>>>>>> master
   isLoaded: 1
   isActive: 1
