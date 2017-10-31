@@ -8,7 +8,18 @@ TagManager:
   - draggable
   - beforeTrampoline
   - trampoline
+<<<<<<< HEAD
   - TextureChange
+=======
+  - owner
+  - slipper
+  - newspaper
+  - sock
+  - dogToy
+  - teddy
+  - locket
+  - vase
+>>>>>>> master
   layers:
   - Default
   - TransparentFX
@@ -18,9 +29,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Pickup
+  - Owner
+  - Player
   - 
   - 
   - 
