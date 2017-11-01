@@ -33,6 +33,9 @@ public class mainMechanic : MonoBehaviour
     [SerializeField]
     private ownerController ownerCon;
 
+    [SerializeField]
+    private imageFade imgFade;
+
     private Camera dogCam;
     public float volController;
     private bool dragSoundPlayed;
@@ -44,6 +47,7 @@ public class mainMechanic : MonoBehaviour
     // De individuelle objekter der kan trækkes skal defineres på forhånd.
     private void Start()
     {
+        StartCoroutine(imgFade.fadeIn());
         dragSoundPlayed = false;
         aSource = GetComponent<AudioSource>();
         volController = 1f;

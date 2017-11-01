@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\bouncyScript.cs" />
+    <Compile Include="Assets\scripts\imageFade.cs" />
     <Compile Include="Assets\scripts\interactionScript.cs" />
     <Compile Include="Assets\scripts\mainMechanic.cs" />
     <Compile Include="Assets\scripts\mouseLook.cs" />
