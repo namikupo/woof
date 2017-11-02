@@ -177,7 +177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &348517982
 GameObject:
@@ -224,6 +224,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sphere: {fileID: 1473474946606026, guid: 8e617560119ee0a459cb8e65754a4b74, type: 2}
   trampoline: {fileID: 1338069382419680, guid: fc34cfb600cd33647b613d437c4492f7, type: 2}
+  changeSound: {fileID: 0}
+  biteSound: {fileID: 0}
+  biteReleaseSound: {fileID: 0}
+  aSource: {fileID: 0}
+  firPerCon: {fileID: 0}
+  ownerCon: {fileID: 0}
+  volController: 0
+  canDrag: 0
+  canMove: 0
 --- !u!23 &348517985
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -376,7 +385,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1058652250
 MonoBehaviour:
@@ -509,7 +518,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_UseFovKick
@@ -609,7 +618,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1385281883 stripped
 GameObject:
@@ -698,6 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5ebd36867f5004f8a8072dfa7e8ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dogController: {fileID: 0}
 --- !u!136 &1914682209
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -715,6 +725,52 @@ CapsuleCollider:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_PrefabInternal: {fileID: 1211099606}
+--- !u!1001 &2002016737
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400068, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 103.256714
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 90.78791
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400068, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4eec749fb80bc934a918c501d8322902, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: dfe866bbc88adab4291269fd43fd0812, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &2080476642
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,7 +897,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400108, guid: fe10d3030af9cfe499d75f61c4790d9f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: fe10d3030af9cfe499d75f61c4790d9f, type: 3}
       propertyPath: m_Controller
