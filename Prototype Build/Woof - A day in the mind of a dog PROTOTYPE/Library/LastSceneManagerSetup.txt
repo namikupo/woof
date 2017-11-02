@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/AnimatedOwner.unity
+- path: Assets/scenes/playTest happy.unity
   isLoaded: 1
   isActive: 1

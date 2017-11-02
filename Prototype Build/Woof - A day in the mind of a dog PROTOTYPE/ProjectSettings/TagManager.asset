@@ -12,6 +12,7 @@ TagManager:
   - dogToy
   - teddy
   - sock
+  - interactableObject
   layers:
   - Default
   - TransparentFX
@@ -21,9 +22,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Pickup
+  - Owner
+  - Player
   - 
   - 
   - 
