@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: 0239efb1c03526042877188032b7c589
-timeCreated: 1509556880
+<<<<<<< HEAD:Prototype Build/Woof - A day in the mind of a dog PROTOTYPE/Assets/objects/Interactibles/News.obj.meta
+guid: 3c4d93dac6462104281b4b55f8e6bc77
+timeCreated: 1509640589
+=======
+guid: 7613819a592af0749bb3d24a5d99dde3
+timeCreated: 1509455180
+>>>>>>> Troels:Prototype Build/Woof - A day in the mind of a dog PROTOTYPE/Assets/objects/Furniture/News.obj.meta
 licenseType: Free
 ModelImporter:
   serializedVersion: 21

@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: ef3ddd3444c73a84b833e29dffb18acf
 timeCreated: 1509556880
+=======
+guid: 32d217ebb8084dd449a25ffd6dd92e20
+timeCreated: 1509455180
+>>>>>>> Troels
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
