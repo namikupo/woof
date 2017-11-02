@@ -15,10 +15,12 @@ public class ownerController : MonoBehaviour
 
     private int fetches;
     public bool depressed;
+    public bool throwingDogToy;
     private bool fadeBool;
 
     private GameObject doggoToy;
     private Rigidbody doggoToyRB;
+    private GameObject grabHand;
 
     private Animator anim;
 
@@ -41,11 +43,13 @@ public class ownerController : MonoBehaviour
             PlayerPrefs.SetInt("ownerSad", 0);
         }
 
+        throwingDogToy = false;
         fadeBool = true;
         doggoToy = GameObject.FindWithTag("dogToy");
         doggoToyRB = doggoToy.GetComponent<Rigidbody>();
         GameObject ownerChar = GameObject.Find("SittingOwner");
         anim = ownerChar.GetComponent<Animator>();
+        grabHand = GameObject.Find("Palm.L");
     }
 
     private void Awake()
@@ -56,9 +60,15 @@ public class ownerController : MonoBehaviour
     // This is the method that makes the owner pick up the dog toy
     public void fetchQuest()
     {
-        mainMec.canDrag = false;
-        doggoToy.transform.position = (new Vector3(this.transform.position.x + 1f, this.transform.position.y + 4f, this.transform.position.z + 1f));
         doggoToyRB.isKinematic = true;
+        doggoToyRB.useGravity = false;
+        mainMec.canDrag = false;
+        throwingDogToy = true;
+        //doggoToy.transform.position = (new Vector3(this.transform.position.x + 1f, this.transform.position.y + 4f, this.transform.position.z + 1f));
+
+        //doggoToy.transform.SetParent(GameObject.Find("Palm.L").transform, false);
+        //doggoToy.transform.position = (new Vector3(this.transform.position.x - 0.2f, this.transform.position.y + 0.15f, this.transform.position.z + 0.2f));
+        //doggoToy.transform.rotation = GameObject.Find("Palm.L").transform.rotation;
         fetches++;
         StartCoroutine(pickingUp());
     }
@@ -69,13 +79,14 @@ public class ownerController : MonoBehaviour
         //this.transform.rotation = Quaternion.Euler(0, Random.Range(60, 240), 0);
         anim.SetInteger("throw", 1);
         yield return new WaitForSecondsRealtime(1f);
-
+        //doggoToy.transform.SetParent(GameObject.Find("Unique").transform, false);
         doggoToyRB.isKinematic = false;
         doggoToyRB.useGravity = true;
         mainMec.canDrag = true;
-        doggoToyRB.AddRelativeForce(this.transform.forward * Random.Range(10f, 15f), ForceMode.Impulse);
+        doggoToyRB.AddForce(this.transform.forward * Random.Range(10f, 15f), ForceMode.Impulse);
         //this.transform.rotation = Quaternion.Euler(0, 180, 0);
         anim.SetInteger("throw", 0);
+        throwingDogToy = false;
     }
 
     public void cheeredUp()
@@ -104,6 +115,12 @@ public class ownerController : MonoBehaviour
 
     private void Update()
     {
+        if (throwingDogToy == true)
+        {
+            doggoToy.transform.position = (new Vector3(grabHand.transform.position.x - 0.2f, grabHand.transform.position.y + 0.15f, grabHand.transform.position.z + 0.2f));
+            doggoToy.transform.rotation = grabHand.transform.rotation;
+        }
+
         if (PlayerPrefs.GetInt("ownerSad") == 1)
         {
             depressed = true;

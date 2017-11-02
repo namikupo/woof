@@ -24,7 +24,7 @@ public class ownerCheck : MonoBehaviour
     {
         if (ownerCon.depressed == false)
         {
-            if (this.fetchObjects.Contains(other.tag))
+            if (this.fetchObjects.Contains(other.tag) && ownerCon.throwingDogToy == false)
             {
                 ownerCon.fetchQuest();
             }

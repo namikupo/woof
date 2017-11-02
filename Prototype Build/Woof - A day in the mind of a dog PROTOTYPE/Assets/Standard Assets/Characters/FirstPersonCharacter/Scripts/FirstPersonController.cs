@@ -133,7 +133,7 @@ public class FirstPersonController : MonoBehaviour
 
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
-        // A reset button in-case the scene needs to be reset
+        // A reset buttons in-case the scene needs to be reset/debugged -Eskild
         if (Input.GetKeyDown(KeyCode.F5))
         {
             PlayerPrefs.SetInt("ownerSad", 0);
@@ -146,6 +146,7 @@ public class FirstPersonController : MonoBehaviour
             SceneManager.LoadScene(1);
         }
 
+        // A temporary exit button, function will become a pause button later
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PlayerPrefs.DeleteAll();
