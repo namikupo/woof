@@ -16,8 +16,27 @@ public class mainMechanic : MonoBehaviour
     private AudioClip changeSound;
 
     //Troels: Lyd der afspilles når et objekt tages fat i.
+
     [SerializeField]
     private AudioClip biteSound;
+
+    [SerializeField]
+    private AudioClip slipperSound;
+
+    [SerializeField]
+    private AudioClip dogToySound;
+
+    [SerializeField]
+    private AudioClip locketSound;
+
+    [SerializeField]
+    private AudioClip sockSound;
+
+    [SerializeField]
+    private AudioClip teddySound;
+
+    [SerializeField]
+    private AudioClip vaseSound;
 
     //Troels: Lyd der afspilles når et objekt gives slip på.
     [SerializeField]
@@ -164,7 +183,7 @@ public class mainMechanic : MonoBehaviour
 
                         if (!dragSoundPlayed)
                         {
-                            aSource.PlayOneShot(biteSound, 1f);
+                            aSource.PlayOneShot(slipperSound, 1f);
                             dragSoundPlayed = true;
                         }
                     }
@@ -193,7 +212,7 @@ public class mainMechanic : MonoBehaviour
 
                         if (!dragSoundPlayed)
                         {
-                            aSource.PlayOneShot(biteSound, 1f);
+                            aSource.PlayOneShot(sockSound, 1f);
                             dragSoundPlayed = true;
                         }
                     }
@@ -207,7 +226,7 @@ public class mainMechanic : MonoBehaviour
 
                         if (!dragSoundPlayed)
                         {
-                            aSource.PlayOneShot(biteSound, 1f);
+                            aSource.PlayOneShot(dogToySound, 1f);
                             dragSoundPlayed = true;
                         }
                     }
@@ -221,7 +240,7 @@ public class mainMechanic : MonoBehaviour
 
                         if (!dragSoundPlayed)
                         {
-                            aSource.PlayOneShot(biteSound, 1f);
+                            aSource.PlayOneShot(teddySound, 1f);
                             dragSoundPlayed = true;
                         }
                     }
@@ -235,7 +254,7 @@ public class mainMechanic : MonoBehaviour
 
                         if (!dragSoundPlayed)
                         {
-                            aSource.PlayOneShot(biteSound, 1f);
+                            aSource.PlayOneShot(locketSound, 1f);
                             dragSoundPlayed = true;
                         }
                     }

@@ -1,13 +1,25 @@
 fileFormatVersion: 2
 guid: cb7eb1b4c98cebb4c97f16ba714d8871
-timeCreated: 1508312477
+timeCreated: 1509608707
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - sphere: {instanceID: 0}
   - trampoline: {instanceID: 0}
-  - change: {instanceID: 0}
+  - changeSound: {instanceID: 0}
+  - biteSound: {instanceID: 0}
+  - slipperSound: {fileID: 8300000, guid: 3f2e2bf06a779144cb34ef3786a4283c, type: 3}
+  - dogToySound: {instanceID: 0}
+  - locketSound: {instanceID: 0}
+  - sockSound: {instanceID: 0}
+  - teddySound: {instanceID: 0}
+  - vaseSound: {instanceID: 0}
+  - biteReleaseSound: {instanceID: 0}
+  - aSource: {instanceID: 0}
+  - firPerCon: {instanceID: 0}
+  - ownerCon: {instanceID: 0}
+  - imgFade: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

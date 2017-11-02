@@ -57,8 +57,12 @@ public class ownerController : MonoBehaviour
     public void fetchQuest()
     {
         mainMec.canDrag = false;
-        doggoToy.transform.position = (new Vector3(this.transform.position.x + 1f, this.transform.position.y + 4f, this.transform.position.z + 1f));
         doggoToyRB.isKinematic = true;
+        //doggoToy.transform.position = (new Vector3(this.transform.position.x + 1f, this.transform.position.y + 4f, this.transform.position.z + 1f));
+        doggoToy.transform.SetParent(GameObject.Find("Palm.L").transform);
+        doggoToy.transform.position = (new Vector3(GameObject.Find("Palm.L").transform.position.x, GameObject.Find("Palm.L").transform.position.y, GameObject.Find("Palm.L").transform.position.z));
+        doggoToy.transform.rotation = GameObject.Find("Palm.L").transform.rotation;
+
         fetches++;
         StartCoroutine(pickingUp());
     }
@@ -69,7 +73,7 @@ public class ownerController : MonoBehaviour
         //this.transform.rotation = Quaternion.Euler(0, Random.Range(60, 240), 0);
         anim.SetInteger("throw", 1);
         yield return new WaitForSecondsRealtime(1f);
-
+        doggoToy.transform.SetParent(null);
         doggoToyRB.isKinematic = false;
         doggoToyRB.useGravity = true;
         mainMec.canDrag = true;
