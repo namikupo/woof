@@ -15,6 +15,7 @@ public class ownerController : MonoBehaviour
 
     private int fetches;
     public bool depressed;
+    private bool fadeBool;
 
     private GameObject doggoToy;
     private Rigidbody doggoToyRB;
@@ -27,6 +28,9 @@ public class ownerController : MonoBehaviour
     [SerializeField]
     private ParticleSystem hearts;
 
+    [SerializeField]
+    private imageFade imgFade;
+
     private void Start()
     {
         if (PlayerPrefs.GetInt("ownerSad") == 1)
@@ -37,6 +41,7 @@ public class ownerController : MonoBehaviour
             PlayerPrefs.SetInt("ownerSad", 0);
         }
 
+        fadeBool = true;
         doggoToy = GameObject.FindWithTag("dogToy");
         doggoToyRB = doggoToy.GetComponent<Rigidbody>();
         GameObject ownerChar = GameObject.Find("SittingOwner");
@@ -109,14 +114,14 @@ public class ownerController : MonoBehaviour
             depressed = false;
         }
 
-        if (fetches >= 6 && PlayerPrefs.GetInt("ownerSad") == 0)
+        if (fetches >= 6 && PlayerPrefs.GetInt("ownerSad") == 0 && fadeBool == true)
         {
             // Insert method that makes the owner pick up the phone, and then get depressed afterwards.
             // For now it is an instant transition
-            PlayerPrefs.SetInt("ownerSad", 1);
-            SceneManager.LoadScene(1);
-        }
 
+            Debug.Log("Test");
+            StartCoroutine(transitioning());
+        }
         // When the owner has recieved enough love, he will become happy and the player reaches the end.
         if (love == 6)
         {
@@ -124,6 +129,16 @@ public class ownerController : MonoBehaviour
             end();
             love++;
         }
+    }
+
+    private IEnumerator transitioning()
+    {
+        fadeBool = false;
+        Debug.Log("Testing");
+        PlayerPrefs.SetInt("ownerSad", 1);
+        StartCoroutine(imgFade.fadeOut());
+        yield return new WaitForSecondsRealtime(3f);
+        SceneManager.LoadScene(1);
     }
 
     // This funct
