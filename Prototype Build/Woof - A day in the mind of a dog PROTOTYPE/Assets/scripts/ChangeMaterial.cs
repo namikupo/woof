@@ -22,7 +22,7 @@ public class ChangeMaterial : MonoBehaviour {
     {
         rend = GetComponent<Renderer>();
         rend.enabled = true;
-        rend.sharedMaterial = material[0];
+       // rend.sharedMaterial = material[0];
 	}
 
    

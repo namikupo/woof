@@ -88,6 +88,7 @@
     <Compile Include="Assets\scripts\ChangeMaterial.cs" />
     <Compile Include="Assets\scripts\ChangeMood.cs" />
     <Compile Include="Assets\scripts\DistanceToHudson.cs" />
+    <Compile Include="Assets\scripts\imageFade.cs" />
     <Compile Include="Assets\scripts\interactionScript.cs" />
     <Compile Include="Assets\scripts\mainMechanic.cs" />
     <Compile Include="Assets\scripts\mouseLook.cs" />

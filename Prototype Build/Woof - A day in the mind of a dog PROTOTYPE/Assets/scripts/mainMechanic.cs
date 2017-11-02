@@ -47,7 +47,7 @@ public class mainMechanic : MonoBehaviour
     // De individuelle objekter der kan trækkes skal defineres på forhånd.
     private void Start()
     {
-        StartCoroutine(imgFade.fadeIn());
+        //StartCoroutine(imgFade.fadeIn());
         dragSoundPlayed = false;
         aSource = GetComponent<AudioSource>();
         volController = 1f;

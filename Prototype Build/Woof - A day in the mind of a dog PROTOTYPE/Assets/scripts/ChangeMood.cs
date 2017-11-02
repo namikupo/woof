@@ -8,8 +8,16 @@ public class ChangeMood : MonoBehaviour {
     public Renderer rend;
 
     public Color ExtremelySad;
-    public Color VerySad;
-    public Color LittleSad;
+    public Color Color1;
+    public Color Color2;
+    public Color Color3;
+    public Color Color4;
+    public Color Color5;
+    public Color Color6;
+
+    [SerializeField]
+    private ownerController ownerCon;
+
     public float timeChange;
 
     bool isExtremelySad;
@@ -17,27 +25,35 @@ public class ChangeMood : MonoBehaviour {
 
     void Start()
     {
-        rend = GetComponent<Renderer>();
+        
+            rend = GetComponent<Renderer>();
         rend.enabled = true;
-        rend.sharedMaterial = material[0];
+        //rend.sharedMaterial = material[0];
         isExtremelySad = true;
     }
 
-
-    //Collider that checks objects with the tag 'draggable', then stops all coroutines, sets the timer to 0 and calls the function 'ColorChange' 
-    void OnTriggerEnter(Collider collision)
+    void Update()
     {
-        if (collision.tag == "draggable")
+        Debug.Log(timer);
+
+        /*if  (Input.GetKeyDown(KeyCode.U))
         {
-            StopAllCoroutines();
+            ownerCon.Love++;
+        }
+         */
+        if (ownerCon.Love >= 1)
+        {
+            //StopAllCoroutines();
             timer = 0;
             StartCoroutine(ExtremelyDepressed());
         }
     }
 
+    
+
     IEnumerator ExtremelyDepressed() //function that gradually changes the color overlay on an the object
     {
-        if (isExtremelySad)
+        if (isExtremelySad && ownerCon.Love == 1)
         {
             //This 'if' statement determines which color the object will become and or is, between the parameters ColorMax and ColorMin
             while (timer < timeChange)
@@ -45,13 +61,104 @@ public class ChangeMood : MonoBehaviour {
                 //The Time.deltaTime; is used to tell how much time has passed on the timer and is referred to as 'timechange'
                 timer += Time.deltaTime;
                 //This line interperates the selected MaxColor and changes it gradually using 'Lerp' 
-                rend.material.color = Color.Lerp(rend.material.color, ExtremelySad, timer / timeChange);
+                rend.material.color = Color.Lerp(rend.material.color, Color1, timer / timeChange);
                 //The process is ended in the same frame the color has reached 'ColorMax'
                 yield return new WaitForEndOfFrame();
             }
             //The timer is promptly set to 0 and the rend.material.color is ColorMax
             timer = 0;
-            rend.material.color = ExtremelySad;
+            rend.material.color = Color1;
+        }
+
+        //The following are multiple 'else if' statements that determine which color to change based on the amount of 'Love' 
+    
+        else if (isExtremelySad && ownerCon.Love == 2)
+        {
+
+            while (timer < timeChange)
+            {
+      
+                timer += Time.deltaTime;
+
+                rend.material.color = Color.Lerp(rend.material.color, Color2, timer / timeChange);
+
+                yield return new WaitForEndOfFrame();
+                timer = 0;
+            }
+
+            timer = 0;
+            rend.material.color = Color2;
+        }
+
+        else if (isExtremelySad && ownerCon.Love == 3)
+        {
+
+            while (timer < timeChange)
+            {
+    
+                timer += Time.deltaTime;
+
+                rend.material.color = Color.Lerp(rend.material.color, Color3, timer / timeChange);
+  
+                yield return new WaitForEndOfFrame();
+                timer = 0;
+            }
+
+            timer = 0;
+            rend.material.color = Color3;
+        }
+
+        else if (isExtremelySad && ownerCon.Love == 4)
+        {
+ 
+            while (timer < timeChange)
+            {
+               
+                timer += Time.deltaTime;
+     
+                rend.material.color = Color.Lerp(rend.material.color, Color4, timer / timeChange);
+                
+                yield return new WaitForEndOfFrame();
+                timer = 0;
+            }
+
+            timer = 0;
+            rend.material.color = Color4;
+        }
+
+        else if (isExtremelySad && ownerCon.Love == 5)
+        {
+        
+            while (timer < timeChange)
+            {
+ 
+                timer += Time.deltaTime;
+
+                rend.material.color = Color.Lerp(rend.material.color, Color5, timer / timeChange);
+     
+                yield return new WaitForEndOfFrame();
+                timer = 0;
+            }
+    
+            timer = 0;
+            rend.material.color = Color5;
+        }
+
+        else if (isExtremelySad && ownerCon.Love == 6)
+        {
+ 
+            while (timer < timeChange)
+            {
+             
+                timer += Time.deltaTime;
+    
+                rend.material.color = Color.Lerp(rend.material.color, Color6, timer / timeChange);
+
+                yield return new WaitForEndOfFrame();
+                timer = 0;
+            }
+            timer = 0;
+            rend.material.color = Color6;
         }
     }
 }

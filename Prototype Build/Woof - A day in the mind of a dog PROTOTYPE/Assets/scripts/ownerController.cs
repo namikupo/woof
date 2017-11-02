@@ -12,6 +12,7 @@ public class ownerController : MonoBehaviour
     // Define animation & points in the world the owner has to go to.
     // Defining the int variable for progression and which particlesystem that is used.
     private int love;
+    
 
     private int fetches;
     public bool depressed;
@@ -30,6 +31,19 @@ public class ownerController : MonoBehaviour
 
     [SerializeField]
     private imageFade imgFade;
+
+    public int Love
+    {
+        get
+        {
+            return love;
+        }
+
+        set
+        {
+            love = value;
+        }
+    }
 
     private void Start()
     {
@@ -84,7 +98,7 @@ public class ownerController : MonoBehaviour
         // This is where the owner gets cheered up.
         Instantiate(hearts, new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), Quaternion.Euler(270f, 0f, 0f));
         StartCoroutine(Petting());
-        love++;
+        Love++;
     }
 
     private IEnumerator pickingUp()
@@ -123,11 +137,11 @@ public class ownerController : MonoBehaviour
             StartCoroutine(transitioning());
         }
         // When the owner has recieved enough love, he will become happy and the player reaches the end.
-        if (love == 6)
+        if (Love == 6)
         {
             //Here goes the end/story progression
             end();
-            love++;
+            Love++;
         }
     }
 
