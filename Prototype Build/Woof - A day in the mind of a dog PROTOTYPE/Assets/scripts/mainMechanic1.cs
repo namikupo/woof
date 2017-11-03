@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mainMechanic : MonoBehaviour
+public class mainMechanic1 : MonoBehaviour
 {
     // Objekt som skal indsættes når man interagere med objekt.
     [SerializeField]

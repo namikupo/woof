@@ -8,14 +8,9 @@ public class imageFade : MonoBehaviour
     [SerializeField]
     private Image blackFade;
 
-    // Use this for initialization
-    private void Start()
-    {
-    }
-
     public IEnumerator fadeIn()
     {
-        for (float i = 3; i >= 0; i -= Time.deltaTime)
+        for (float i = 5; i >= 0; i -= Time.deltaTime)
 
         {
             blackFade.color = new Color(1, 1, 1, i);
@@ -30,10 +25,5 @@ public class imageFade : MonoBehaviour
             blackFade.color = new Color(1, 1, 1, i);
             yield return null;
         }
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
     }
 }

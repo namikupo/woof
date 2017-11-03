@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
 public class ownerCheck1 : MonoBehaviour
-=======
-public class ownerCheck : MonoBehaviour
->>>>>>> Troels
 {
     // Author: Eskild Middelboe
     // Function: This script checks the owner's surrounding collider for incoming objects.
@@ -15,11 +11,7 @@ public class ownerCheck : MonoBehaviour
 
     // Defining the foreign script, as well as the list.
     [SerializeField]
-<<<<<<< HEAD
     private ownerController12 ownerCon;
-=======
-    private ownerController ownerCon;
->>>>>>> Troels
 
     [SerializeField]
     private List<string> happyObjects = new List<string>();
@@ -32,11 +24,7 @@ public class ownerCheck : MonoBehaviour
     {
         if (ownerCon.depressed == false)
         {
-<<<<<<< HEAD
             if (this.fetchObjects.Contains(other.tag) && ownerCon.throwingDogToy == false)
-=======
-            if (this.fetchObjects.Contains(other.tag))
->>>>>>> Troels
             {
                 ownerCon.fetchQuest();
             }

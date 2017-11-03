@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Prototype Build/Woof - A day in the mind of a dog PROTOTYPE/Assets/objects/Interactibles/News.obj.meta
-guid: 3c4d93dac6462104281b4b55f8e6bc77
-timeCreated: 1509640589
-=======
-guid: 7613819a592af0749bb3d24a5d99dde3
-timeCreated: 1509455180
->>>>>>> Troels:Prototype Build/Woof - A day in the mind of a dog PROTOTYPE/Assets/objects/Furniture/News.obj.meta
-licenseType: Free
+guid: 8f0cb1492fbac7d439416218810b5128
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -17,6 +10,7 @@ ModelImporter:
     2300000: default
     3300000: default
     4300000: default
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -86,7 +80,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -43,11 +43,12 @@ public class ownerController : MonoBehaviour
         doggoToyRB = doggoToy.GetComponent<Rigidbody>();
         GameObject ownerChar = GameObject.Find("OwnerMappedV4");
         anim = ownerChar.GetComponent<Animator>();
-        grabHand = GameObject.Find("Palm.L");
+        grabHand = GameObject.Find("HandFollow");
         anim.SetBool("gameOver", false);
 
         if (PlayerPrefs.GetInt("ownerSad") == 1)
         {
+            Debug.Log("Test");
             anim.SetBool("animDepressed", true);
         }
         else
@@ -68,14 +69,15 @@ public class ownerController : MonoBehaviour
         doggoToyRB.isKinematic = true;
         //doggoToyRB.useGravity = false;
         mainMec.canDrag = false;
-        //throwingDogToy = true;
+        throwingDogToy = true;
         //doggoToy.transform.position = (new Vector3(this.transform.position.x + 1f, this.transform.position.y + 4f, this.transform.position.z + 1f));
         //doggoToy.transform.SetParent(grabHand.transform, false);
-        doggoToy.transform.SetParent(GameObject.Find("Palm.L").transform);
-        doggoToy.transform.position = (new Vector3(GameObject.Find("Palm.L").transform.position.x, GameObject.Find("Palm.L").transform.position.y, GameObject.Find("Palm.L").transform.position.z));
-        doggoToy.transform.rotation = GameObject.Find("Palm.L").transform.rotation;
+        doggoToy.transform.SetParent(GameObject.Find("HandFollow").transform);
+        doggoToy.transform.position = (new Vector3(GameObject.Find("HandFollow").transform.position.x + 0.00565f, GameObject.Find("HandFollow").transform.position.y + 0.01159f, GameObject.Find("HandFollow").transform.position.z + 0.00471f));
+        doggoToy.transform.rotation = Quaternion.Euler(GameObject.Find("HandFollow").transform.rotation.x + 90f, GameObject.Find("HandFollow").transform.rotation.y - 30f, GameObject.Find("HandFollow").transform.rotation.z);
         //doggoToy.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         //doggoToy.transform.localScale = boneSize;
+        Instantiate(hearts, new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), Quaternion.Euler(270f, 0f, 0f));
         fetches++;
         StartCoroutine(pickingUp());
     }
@@ -85,7 +87,7 @@ public class ownerController : MonoBehaviour
     {
         //this.transform.rotation = Quaternion.Euler(0, Random.Range(60, 240), 0);
         // anim.SetInteger("throw", 1);
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(1.3f);
         //doggoToy.transform.SetParent(null);
         doggoToy.transform.SetParent(null);
         //doggoToy.transform.localScale = boneSize;
@@ -170,6 +172,7 @@ public class ownerController : MonoBehaviour
     // This funct
     private void end()
     {
+        anim.SetBool("animDepressed", false);
         //Here is the
     }
 }
