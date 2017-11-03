@@ -98,6 +98,7 @@
     <Compile Include="Assets\scripts\ownerController.cs" />
     <Compile Include="Assets\scripts\ownerController1.cs" />
     <Compile Include="Assets\scripts\ownerController12.cs" />
+    <Compile Include="Assets\scripts\vaseBreak.cs" />
     <Compile Include="Assets\Test.cs" />
   </ItemGroup>
   <ItemGroup>

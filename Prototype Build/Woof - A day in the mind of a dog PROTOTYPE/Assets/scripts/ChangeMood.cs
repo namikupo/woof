@@ -34,8 +34,6 @@ public class ChangeMood : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(timer);
-
         /*if  (Input.GetKeyDown(KeyCode.U))
         {
             ownerCon.Love++;
