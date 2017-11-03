@@ -26,6 +26,9 @@ public class vaseBreak : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
+    private AudioClip spookSound;
+
+    [SerializeField]
     private AudioClip vaseSound;
 
     [SerializeField]
@@ -45,9 +48,8 @@ public class vaseBreak : MonoBehaviour
         if (other.tag == "plane" && broken == false)
         {
             broken = true;
+            // The sound of the vase gets played
             aSource.PlayOneShot(vaseSound);
-            // The sound of the vase gets played, the animator bool gets set to true so the gameover animation plays.
-            anim.SetBool("gameOver", true);
             // The player also cannot move, so that the entire focus is put on the scene.
             mainMec.canMove = false;
             // If gravity was still enabled, the player would shift through the floor.
@@ -61,9 +63,18 @@ public class vaseBreak : MonoBehaviour
             GameObject.Find("FPSController").transform.eulerAngles = new Vector3(0f, 90f, 0f);
             // Instantiating the light at the player's position at a certain angle, so that one can see the owner.
             Instantiate(scaryLight, GameObject.Find("FPSController").transform.position, Quaternion.Euler(240, 90, 0));
-            // The game needs to restart to the beginning of the level.
-            StartCoroutine(restarting());
+            // The animation is delayed so the player can adjust to the change in surroundings.
+            StartCoroutine(ownerScary());
         }
+    }
+
+    private IEnumerator ownerScary()
+    {
+        aSource.PlayOneShot(spookSound);
+        yield return new WaitForSecondsRealtime(4.2f);
+        anim.SetBool("gameOver", true);
+        // The game needs to restart to the beginning of the level.
+        StartCoroutine(restarting());
     }
 
     private IEnumerator restarting()

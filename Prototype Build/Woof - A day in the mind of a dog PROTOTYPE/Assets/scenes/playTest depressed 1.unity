@@ -6522,6 +6522,7 @@ MonoBehaviour:
   scaryLight: {fileID: 1298423603492662, guid: 82808443bc218404da9a177c0589e498, type: 2}
   mainMec: {fileID: 956133055}
   anim: {fileID: 2128158662}
+  spookSound: {fileID: 8300000, guid: 0d6a3bad41b8ba347b8487964f19a50e, type: 3}
   vaseSound: {fileID: 8300000, guid: 463cc1b351b2c90459b2388b1ab692e4, type: 3}
   aSource: {fileID: 2073194288}
 --- !u!1 &2086948125
