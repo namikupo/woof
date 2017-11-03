@@ -14,6 +14,13 @@ public class FirstPersonController : MonoBehaviour
     // The player is controlled by a character controller component, meaning that the main character is not affected by physics.
     // To compensate for this, the player applied force to other objects when near them to simulate physics.
 
+    // Eskild: This script utilizes 3 other scripts. "MouseLook", "FOVKick", "CurveControlledBob", "LerpControlledBob" & "CrossPlatformInputManager".
+    // These scripts each have their own functions, and for simplicity's sake they will be described shortly here:
+    // MouseLook controls the player camera, making it move in accordance with mouse input.
+    // All input is handled by CrossPlatformInputManager.
+    // FOVKick isn't enabled in the inspector, thus making all the code concerning it meaningless;
+    // The Bob scripts control the player's headbob that can be adjusted in the inspector.
+
     [SerializeField] private bool m_IsWalking;
     [SerializeField] private float m_WalkSpeed;
     [SerializeField] private float m_RunSpeed;
@@ -50,6 +57,7 @@ public class FirstPersonController : MonoBehaviour
     private Transform checkMuzzle;
     private Transform cameraTransform;
 
+    // Eskild: Lots of encapsulated fields in order to make the player not able to /able to move.
     public float JumpSpeed
     {
         get
@@ -103,7 +111,7 @@ public class FirstPersonController : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform);
 
-        // Need to declare variables in order to change them via scripts - Eskild
+        // Eskild: Need to declare variables in order to change them via scripts.
         m_WalkSpeed = 8f;
         m_RunSpeed = 8f;
         gravityEnabled = true;
@@ -135,7 +143,7 @@ public class FirstPersonController : MonoBehaviour
 
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
-        // A reset buttons in-case the scene needs to be reset/debugged -Eskild
+        // Eskild: A reset buttons in-case the scene needs to be reset/debugged
         if (Input.GetKeyDown(KeyCode.F5))
         {
             PlayerPrefs.SetInt("ownerSad", 0);
@@ -148,7 +156,7 @@ public class FirstPersonController : MonoBehaviour
             SceneManager.LoadScene(1);
         }
 
-        // A temporary exit button, function will become a pause button later
+        // Eskild: An exit button.
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PlayerPrefs.DeleteAll();

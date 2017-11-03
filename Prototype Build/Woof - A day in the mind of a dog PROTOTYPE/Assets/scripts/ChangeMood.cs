@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ChangeMood : MonoBehaviour
 {
+    // Author: Victor Joensen
+    // Function: Making a material change color in accordance with the love variable.
+
     public Material[] material;
     public SkinnedMeshRenderer rend;
 
