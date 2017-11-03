@@ -13,6 +13,7 @@ TagManager:
   - teddy
   - sock
   - interactableObject
+  - plane
   layers:
   - Default
   - TransparentFX

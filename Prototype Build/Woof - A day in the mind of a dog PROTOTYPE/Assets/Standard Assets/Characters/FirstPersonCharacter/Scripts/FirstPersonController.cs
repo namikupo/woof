@@ -45,6 +45,7 @@ public class FirstPersonController : MonoBehaviour
     private float m_NextStep;
     private bool m_Jumping;
     private AudioSource m_AudioSource;
+    public bool gravityEnabled;
 
     private Transform checkMuzzle;
     private Transform cameraTransform;
@@ -105,6 +106,7 @@ public class FirstPersonController : MonoBehaviour
         // Need to declare variables in order to change them via scripts - Eskild
         m_WalkSpeed = 8f;
         m_RunSpeed = 8f;
+        gravityEnabled = true;
     }
 
     // Update is called once per frame
@@ -187,7 +189,7 @@ public class FirstPersonController : MonoBehaviour
                 dogJump();
             }
         }
-        else
+        else if (gravityEnabled == true)
         {
             m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
         }

@@ -17,12 +17,13 @@ public class ownerController : MonoBehaviour
     public bool depressed;
     public bool throwingDogToy;
     private bool fadeBool;
+    private int endMoveTime;
 
     private GameObject doggoToy;
     private Rigidbody doggoToyRB;
+    private GameObject player;
     public GameObject grabHand;
     private Vector3 boneSize;
-
     private Animator anim;
 
     [SerializeField]
@@ -34,13 +35,27 @@ public class ownerController : MonoBehaviour
     [SerializeField]
     private imageFade imgFade;
 
+    public int Love
+    {
+        get
+        {
+            return love;
+        }
+
+        set
+        {
+            love = value;
+        }
+    }
+
     private void Start()
     {
+        endMoveTime = 0;
         throwingDogToy = false;
         fadeBool = true;
         doggoToy = GameObject.FindGameObjectWithTag("dogToy");
-        boneSize = doggoToy.transform.lossyScale;
         doggoToyRB = doggoToy.GetComponent<Rigidbody>();
+        player = GameObject.Find("FPSController");
         GameObject ownerChar = GameObject.Find("OwnerMappedV4");
         anim = ownerChar.GetComponent<Animator>();
         grabHand = GameObject.Find("HandFollow");
@@ -48,7 +63,6 @@ public class ownerController : MonoBehaviour
 
         if (PlayerPrefs.GetInt("ownerSad") == 1)
         {
-            Debug.Log("Test");
             anim.SetBool("animDepressed", true);
         }
         else
@@ -106,7 +120,7 @@ public class ownerController : MonoBehaviour
         // This is where the owner gets cheered up.
         Instantiate(hearts, new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), Quaternion.Euler(270f, 0f, 0f));
         StartCoroutine(Petting());
-        love++;
+        Love++;
     }
 
     private IEnumerator pickingUp()
@@ -126,13 +140,6 @@ public class ownerController : MonoBehaviour
 
     private void Update()
     {
-        /* if (throwingDogToy == true)
-         {
-             //doggoToy.transform.SetParent(grabHand.transform);
-             //doggoToy.transform.localPosition = (new Vector3(grabHand.transform.position.x - 0.2f, grabHand.transform.position.y + 0.15f, grabHand.transform.position.z + 0.2f));
-             //doggoToy.transform.rotation = grabHand.transform.rotation;
-         }*/
-
         if (PlayerPrefs.GetInt("ownerSad") == 1)
         {
             depressed = true;
@@ -151,11 +158,11 @@ public class ownerController : MonoBehaviour
             StartCoroutine(transitioning());
         }
         // When the owner has recieved enough love, he will become happy and the player reaches the end.
-        if (love == 6)
+        if (Love == 6)
         {
             //Here goes the end/story progression
             end();
-            love++;
+            Love++;
         }
     }
 
@@ -172,7 +179,43 @@ public class ownerController : MonoBehaviour
     // This funct
     private void end()
     {
+        mainMec.canMove = false;
+        mainMec.canDrag = false;
         anim.SetBool("animDepressed", false);
-        //Here is the
+        player.GetComponent<FirstPersonController>().gravityEnabled = false;
+        player.transform.rotation = Quaternion.Euler(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z);
+        player.transform.SetParent(GameObject.Find("HeadFollow").transform);
+        player.transform.position = (new Vector3(GameObject.Find("HeadFollow").transform.position.x + 2, player.transform.position.y, GameObject.Find("HeadFollow").transform.position.z));
+        StartCoroutine(beginningOfEnd());
+    }
+
+    private IEnumerator beginningOfEnd()
+    {
+        yield return new WaitForSecondsRealtime(5.8f);
+        StartCoroutine(movingToOwnerEnd());
+    }
+
+    private IEnumerator movingToOwnerEnd()
+    {
+        while (endMoveTime < 230)
+        {
+            endMoveTime++;
+            player.transform.position = (new Vector3(player.transform.position.x - 0.01f, player.transform.position.y, player.transform.position.z));
+            yield return new WaitForSecondsRealtime(0.025f);
+            StartCoroutine(movingToOwnerEnd());
+        }
+
+        if (endMoveTime > 229)
+        {
+            StartCoroutine(ending());
+        }
+    }
+
+    private IEnumerator ending()
+    {
+        StartCoroutine(imgFade.fadeOut());
+        yield return new WaitForSecondsRealtime(4);
+        PlayerPrefs.SetInt("ownerSad", 0);
+        SceneManager.LoadScene(0);
     }
 }

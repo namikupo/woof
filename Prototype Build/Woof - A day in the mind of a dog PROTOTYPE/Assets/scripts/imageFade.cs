@@ -10,7 +10,7 @@ public class imageFade : MonoBehaviour
 
     public IEnumerator fadeIn()
     {
-        for (float i = 5; i >= 0; i -= Time.deltaTime)
+        for (float i = 2; i >= 0; i -= Time.deltaTime)
 
         {
             blackFade.color = new Color(1, 1, 1, i);
@@ -21,6 +21,16 @@ public class imageFade : MonoBehaviour
     public IEnumerator fadeOut()
     {
         for (float i = 0; i <= 3; i += Time.deltaTime)
+        {
+            blackFade.color = new Color(1, 1, 1, i);
+            yield return null;
+        }
+    }
+
+    public IEnumerator longFadeIn()
+    {
+        for (float i = 5; i >= 0; i -= Time.deltaTime)
+
         {
             blackFade.color = new Color(1, 1, 1, i);
             yield return null;
